@@ -24,8 +24,10 @@
    - [`ollama_engine.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/ollama_engine.py): Asynchronous local fallback using Ollama REST API with streaming tokens and function calling.
    - Intelligent failover: Seamless switchover from Antigravity to local Ollama if uplink is unavailable.
 
-4. **Terminal Interface & CLI Loop** ([`bujji/main.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/main.py), [`bujji/ui/terminal_ui.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/ui/terminal_ui.py)):
+4. **Terminal Interface & CLI Loop** ([`bujji/main.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/main.py), [`bujji/ui/terminal_ui.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/ui/terminal_ui.py), [`run.py`](file:///c:/Users/asami/DOCS/Bujji/run.py)):
    - Rich stylized startup banner and interactive REPL.
+   - Cross-platform Windows UTF-8 console compatibility.
+   - Added root-level launcher [`run.py`](file:///c:/Users/asami/DOCS/Bujji/run.py) and resolved direct script execution via `sys.path` bootstrapping.
    - Full slash command set: `/status`, `/mode <engine>`, `/tools`, `/clear`, `/help`, `/exit`.
    - Real-time token streaming and status alerts.
 

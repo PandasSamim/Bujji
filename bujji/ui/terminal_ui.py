@@ -27,11 +27,11 @@ BUJJI_BANNER = """
 def display_banner(assistant_name: str = "Bujji", version: str = "0.1.0", mode: str = "antigravity") -> None:
     """Display the introductory startup banner."""
     banner_text = Text(BUJJI_BANNER, style="bold cyan")
-    subtitle = f"Personal AI Assistant • v{version} • Engine: [{mode.upper()}] • Inspired by JARVIS"
+    subtitle = f"Personal AI Assistant | v{version} | Engine: [{mode.upper()}] | Inspired by JARVIS"
     
     panel = Panel(
         banner_text,
-        title=f"[bold white]⚡ {assistant_name.upper()} ONLINE ⚡[/bold white]",
+        title=f"[bold white]>>> {assistant_name.upper()} ONLINE <<<[/bold white]",
         subtitle=f"[dim]{subtitle}[/dim]",
         border_style="bright_blue",
         padding=(0, 2),

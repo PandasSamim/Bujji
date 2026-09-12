@@ -4,9 +4,25 @@ Runs the interactive chat loop with rich styling and slash command controls.
 """
 
 from typing import Optional
+from pathlib import Path
 import asyncio
 import sys
 import os
+
+# Ensure project root is on sys.path when executed directly as a script
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+# Ensure Windows terminal handles UTF-8 safely
+if sys.platform == "win32":
+    try:
+        if sys.stdout and hasattr(sys.stdout, "reconfigure"):
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        if sys.stderr and hasattr(sys.stderr, "reconfigure"):
+            sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
 
 from bujji.config import BujjiConfig
 from bujji.core.agent import BujjiAgent
