@@ -1,6 +1,6 @@
 # Bujji - Project Architecture & Roadmap
 
-> **Bujji** is an autonomous personal AI assistant inspired by JARVIS, powered by the Google Antigravity SDK with hybrid local LLM (Ollama) fallback, voice interaction, system control, persistent memory, and an overlay UI.
+> **Bujji** is an autonomous personal AI assistant inspired by JARVIS, designed for 100% free local & offline operation via Ollama (`qwen2.5:7b`) with zero API costs, hybrid cloud support, voice interaction, system control, persistent memory, and an overlay UI.
 > 
 > **GitHub Repository**: [PandasSamim/Bujji](https://github.com/PandasSamim/Bujji) (Branch: `main`)
 

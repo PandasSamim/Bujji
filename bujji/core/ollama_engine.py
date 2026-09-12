@@ -15,7 +15,7 @@ class OllamaEngine:
     def __init__(
         self,
         base_url: str = "http://localhost:11434",
-        model: str = "llama3.2",
+        model: str = "qwen2.5:7b",
         temperature: float = 0.7,
         timeout_seconds: float = 60.0
     ):
@@ -59,6 +59,11 @@ class OllamaEngine:
         if system_prompt:
             payload_messages.append({"role": "system", "content": system_prompt})
         payload_messages.extend(messages)
+
+        # Auto-detect available local model if configured model is not found
+        available = await self.get_available_models()
+        if available and not any(self.model in m for m in available):
+            self.model = available[0]
 
         payload: Dict[str, Any] = {
             "model": self.model,

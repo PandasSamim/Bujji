@@ -7,8 +7,8 @@ assistant:
   personality: "Confident, witty, highly resourceful, polite yet proactive (JARVIS-inspired)"
 
 engine:
-  # Primary reasoning engine: "antigravity" or "ollama" or "hybrid"
-  default_mode: "antigravity"
+  # Primary reasoning engine: "ollama" (100% free, local & offline) or "antigravity"
+  default_mode: "ollama"
   antigravity:
     model: "gemini-2.5-flash"
     streaming: true
@@ -18,7 +18,7 @@ engine:
       allow_browser: false
   ollama:
     base_url: "http://localhost:11434"
-    model: "llama3.2"
+    model: "qwen2.5:7b"
     temperature: 0.7
 
 voice:

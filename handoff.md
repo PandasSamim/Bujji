@@ -19,10 +19,11 @@
    - [`terminal.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/tools/terminal.py): Safe shell execution with timeouts and destructive command blacklist (`rmdir /s`, `del /s /q c:`, etc.).
    - [`registry.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/tools/registry.py): Central registry generating standard schemas and dynamic dispatch for Antigravity & Ollama.
 
-3. **Hybrid Model Architecture** ([`bujji/core/`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/)):
-   - [`agent.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/agent.py): `BujjiAgent` orchestrating Google Antigravity SDK (`Agent`, `LocalAgentConfig`, `CapabilitiesConfig`) and Ollama local engine.
-   - [`ollama_engine.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/ollama_engine.py): Asynchronous local fallback using Ollama REST API with streaming tokens and function calling.
-   - Intelligent failover: Seamless switchover from Antigravity to local Ollama if uplink is unavailable.
+3. **Hybrid Model Architecture & 100% Free Local Execution** ([`bujji/core/`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/)):
+   - Configured `ollama` as the **primary default engine** with the locally detected `qwen2.5:7b` model for **100% free, offline, and private inference** (zero API keys or costs needed).
+   - [`agent.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/agent.py): `BujjiAgent` orchestrator managing local Ollama streaming and Antigravity SDK.
+   - [`ollama_engine.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/ollama_engine.py): Asynchronous local fallback using Ollama REST API with streaming tokens, model auto-discovery, and tool dispatch.
+   - Verified live execution with local `qwen2.5:7b` in `.antigravity/test_live_ollama_chat.py`.
 
 4. **Terminal Interface & CLI Loop** ([`bujji/main.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/main.py), [`bujji/ui/terminal_ui.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/ui/terminal_ui.py), [`run.py`](file:///c:/Users/asami/DOCS/Bujji/run.py)):
    - Rich stylized startup banner and interactive REPL.
