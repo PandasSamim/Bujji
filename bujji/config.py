@@ -40,7 +40,7 @@ class BujjiConfig:
 
     @property
     def default_engine(self) -> str:
-        return self._data.get("engine", {}).get("default_mode", "antigravity")
+        return self._data.get("engine", {}).get("default_mode", "ollama")
 
     @property
     def raw(self) -> Dict[str, Any]:

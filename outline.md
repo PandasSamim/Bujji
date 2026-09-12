@@ -88,11 +88,22 @@ Bujji/
   - [x] Create [`.antigravity/test_cli_commands.py`](file:///c:/Users/asami/DOCS/Bujji/.antigravity/test_cli_commands.py): Verify slash commands and system diagnostics.
   - [x] Execute tests and verify zero main-project contamination.
 
-### Phase 3: Voice System
-- [ ] Wake word detection ("Hey Bujji") using openwake-word or Porcupine.
-- [ ] Speech-to-Text (STT) via `faster-whisper`.
-- [ ] Text-to-Speech (TTS) using local high-performance Piper TTS.
-- [ ] Complete voice loop with clear state transitions: `[Listening] -> [Thinking] -> [Speaking]`.
+### Phase 3: Voice System [IN PROGRESS]
+- **Step 3.1: Text-to-Speech Subsystem (`bujji/voice/tts.py`)**
+  - [ ] Implement Piper TTS integration for high-quality neural voice synthesis.
+  - [ ] Implement zero-latency local fallback using Windows SAPI5 (`pyttsx3`).
+  - [ ] Non-blocking voice playback and speech queue.
+- **Step 3.2: Speech-to-Text Subsystem (`bujji/voice/stt.py`)**
+  - [ ] Implement local microphone capture with energy/silence detection.
+  - [ ] Transcribe audio with local `faster-whisper` (base.en/tiny.en) & speech recognition fallback.
+- **Step 3.3: Wake Word Detection (`bujji/voice/wakeword.py`)**
+  - [ ] Implement acoustic trigger and keyword detection for "Hey Bujji" / "Bujji".
+  - [ ] Low-overhead standby listening loop.
+- **Step 3.4: Complete Voice Loop & State Machine (`bujji/voice/loop.py`)**
+  - [ ] Orchestrate lifecycle states: `[STANDBY]` -> `[LISTENING]` -> `[THINKING]` -> `[SPEAKING]`.
+  - [ ] Integrate `/voice` command into interactive CLI and `--voice` CLI flag.
+- **Step 3.5: Verification & Test Suite in `.antigravity/`**
+  - [ ] Create `.antigravity/test_phase3_voice.py`: Verify TTS synthesis, STT pipeline, wake word, and state machine.
 
 ### Phase 4: System Control
 - [ ] Application lifecycle control (launching, closing, switching apps).

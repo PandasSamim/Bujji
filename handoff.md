@@ -39,13 +39,17 @@
 
 ---
 
-## 3. Pending & Next Steps: Phase 3 (Voice System)
+## 3. Active Phase: Phase 3 (Voice System)
 
-1. **Wake Word Detection** (`bujji/voice/wakeword.py`):
-   - Listen for "Hey Bujji" hotword.
-2. **Speech-to-Text** (`bujji/voice/stt.py`):
-   - Local audio transcription using `faster-whisper`.
-3. **Text-to-Speech** (`bujji/voice/tts.py`):
-   - Natural voice synthesis using Piper TTS.
-4. **Voice State Machine** (`bujji/voice/loop.py`):
-   - Orchestrate states: `[Listening] -> [Thinking] -> [Speaking]`.
+### Planned Steps:
+1. **Text-to-Speech Subsystem** (`bujji/voice/tts.py`):
+   - Local synthesis supporting Piper TTS and built-in Windows SAPI5 (`pyttsx3`) zero-dependency fallback.
+2. **Speech-to-Text Subsystem** (`bujji/voice/stt.py`):
+   - Audio capture with energy/silence detection and transcription via `faster-whisper`.
+3. **Wake Word Detection** (`bujji/voice/wakeword.py`):
+   - Standby acoustic trigger for "Hey Bujji" / "Bujji".
+4. **Voice State Machine Loop** (`bujji/voice/loop.py`):
+   - Lifecycle: `[STANDBY]` -> `[LISTENING]` -> `[THINKING]` -> `[SPEAKING]`.
+   - Toggleable via `/voice` command or `--voice` CLI option.
+5. **Testing Suite in `.antigravity/`**:
+   - Audio pipeline simulation and hardware check script.

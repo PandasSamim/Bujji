@@ -66,11 +66,10 @@ class BujjiAgent:
         """
         self.history.append({"role": "user", "content": user_input})
 
-        # Try Antigravity SDK if mode is 'antigravity' or 'hybrid'
-        if self.mode in ("antigravity", "hybrid") and ANTIGRAVITY_SDK_AVAILABLE:
+        # Try Antigravity SDK if mode is 'antigravity' or 'hybrid' and API key is present
+        api_key = os.getenv("GEMINI_API_KEY")
+        if self.mode in ("antigravity", "hybrid") and ANTIGRAVITY_SDK_AVAILABLE and api_key:
             try:
-                # Check for API key presence if running in cloud mode
-                api_key = os.getenv("GEMINI_API_KEY")
                 capabilities = CapabilitiesConfig()
                 agent_config = LocalAgentConfig(
                     system_instructions=self.system_instructions,
