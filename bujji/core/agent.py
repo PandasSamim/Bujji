@@ -25,13 +25,17 @@ class BujjiAgent:
         self.config = config or BujjiConfig.load()
         self.name = self.config.assistant_name
         self.mode = self.config.default_engine  # 'antigravity', 'ollama', or 'hybrid'
-        self.system_instructions = get_system_instructions(name=self.name)
+        self.system_instructions = get_system_instructions(
+            name=self.name,
+            user_name=self.config.user_name,
+            user_language=self.config.user_native_language,
+        )
         
         # Setup Ollama fallback engine
         ollama_cfg = self.config.get("engine", {}).get("ollama", {})
         self.ollama = OllamaEngine(
             base_url=ollama_cfg.get("base_url", "http://localhost:11434"),
-            model=ollama_cfg.get("model", "llama3.2"),
+            model=ollama_cfg.get("model", "qwen2.5:7b"),
             temperature=ollama_cfg.get("temperature", 0.7),
         )
 

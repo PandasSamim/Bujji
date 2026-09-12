@@ -6,6 +6,11 @@ assistant:
   role: "Personal AI Assistant & Autonomous System Companion"
   personality: "Confident, witty, highly resourceful, polite yet proactive (JARVIS-inspired)"
 
+user:
+  name: "Boss"
+  native_language: "Bengali"
+  language_script: "Bengali (বাংলা) & Romanized Banglish"
+
 engine:
   # Primary reasoning engine: "ollama" (100% free, local & offline) or "antigravity"
   default_mode: "ollama"

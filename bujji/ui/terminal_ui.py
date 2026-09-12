@@ -73,10 +73,30 @@ def display_tools_table(schemas: List[Dict[str, Any]]) -> None:
     console.print(table)
     console.print()
 
+if sys.platform == "win32":
+    try:
+        if sys.stdout and hasattr(sys.stdout, "reconfigure"):
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        if sys.stderr and hasattr(sys.stderr, "reconfigure"):
+            sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 def print_token(token: str) -> None:
-    """Stream token to stdout immediately."""
-    sys.stdout.write(token)
-    sys.stdout.flush()
+    """Stream token to stdout safely across all Windows codepages."""
+    try:
+        sys.stdout.write(token)
+        sys.stdout.flush()
+    except UnicodeEncodeError:
+        try:
+            if hasattr(sys.stdout, "buffer"):
+                sys.stdout.buffer.write(token.encode("utf-8", errors="replace"))
+                sys.stdout.buffer.flush()
+            else:
+                sys.stdout.write(token.encode("ascii", errors="replace").decode("ascii"))
+                sys.stdout.flush()
+        except Exception:
+            pass
 
 def print_status_message(message: str) -> None:
     """Print an auxiliary status message or alert."""

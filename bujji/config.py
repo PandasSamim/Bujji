@@ -39,6 +39,14 @@ class BujjiConfig:
         return self._data.get("assistant", {}).get("version", "0.1.0")
 
     @property
+    def user_name(self) -> str:
+        return self._data.get("user", {}).get("name", "Boss")
+
+    @property
+    def user_native_language(self) -> str:
+        return self._data.get("user", {}).get("native_language", "Bengali")
+
+    @property
     def default_engine(self) -> str:
         return self._data.get("engine", {}).get("default_mode", "ollama")
 
