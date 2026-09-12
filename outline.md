@@ -68,24 +68,25 @@ Bujji/
 - [x] Setup `requirements.txt`.
 - [x] Install & verify Antigravity SDK (`google-antigravity`) with test script in `.antigravity/`.
 
-### Phase 2: Core Agent [IN PROGRESS]
+### Phase 2: Core Agent [COMPLETED]
 - **Step 2.1: Personality & System Prompt Architecture**
-  - [ ] Implement `bujji/core/prompts.py`: JARVIS-inspired identity (confident, polite, witty, proactive, concise).
-  - [ ] Define formatting protocols, tool execution awareness, and safety guidelines in system instructions.
+  - [x] Implement [`bujji/core/prompts.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/prompts.py): JARVIS-inspired identity (confident, polite, witty, proactive, concise).
+  - [x] Define formatting protocols, tool execution awareness, and safety guidelines in system instructions.
 - **Step 2.2: Tooling Framework & Execution Handlers**
-  - [ ] Implement `bujji/tools/filesystem.py`: Safe read, write, list, and search within project boundaries.
-  - [ ] Implement `bujji/tools/terminal.py`: Safe terminal command execution with timeouts and blocked dangerous patterns.
-  - [ ] Implement `bujji/tools/registry.py`: Central tool dispatcher with unified schema for both Antigravity and Ollama.
+  - [x] Implement [`bujji/tools/filesystem.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/tools/filesystem.py): Safe read, write, list, and search within project boundaries.
+  - [x] Implement [`bujji/tools/terminal.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/tools/terminal.py): Safe terminal command execution with timeouts and blocked dangerous patterns.
+  - [x] Implement [`bujji/tools/registry.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/tools/registry.py): Central tool dispatcher with unified schema for both Antigravity and Ollama.
 - **Step 2.3: Hybrid Model Engine (Antigravity SDK + Ollama)**
-  - [ ] Implement `bujji/core/agent.py`: Unified `BujjiAgent` orchestrator managing life-cycle, model switching, and session state.
-  - [ ] Implement `bujji/core/ollama_engine.py`: Local LLM fallback engine via Ollama REST/API client for offline resilience.
-  - [ ] Implement intelligent failover: Antigravity primary -> Ollama local fallback -> graceful error recovery.
+  - [x] Implement [`bujji/core/agent.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/agent.py): Unified `BujjiAgent` orchestrator managing life-cycle, model switching, and session state.
+  - [x] Implement [`bujji/core/ollama_engine.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/ollama_engine.py): Local LLM fallback engine via Ollama REST/API client for offline resilience.
+  - [x] Implement intelligent failover: Antigravity primary -> Ollama local fallback -> graceful error recovery.
 - **Step 2.4: Interactive Text Chat Loop & Terminal UI**
-  - [ ] Implement `bujji/ui/terminal_ui.py`: Rich terminal presentation with Bujji banner, status indicators, and streaming tokens.
-  - [ ] Implement `bujji/main.py`: Interactive CLI entry point with commands (`/mode`, `/status`, `/tools`, `/exit`).
+  - [x] Implement [`bujji/ui/terminal_ui.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/ui/terminal_ui.py): Rich terminal presentation with Bujji banner, status indicators, and streaming tokens.
+  - [x] Implement [`bujji/main.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/main.py): Interactive CLI entry point with commands (`/mode`, `/status`, `/tools`, `/exit`).
 - **Step 2.5: Verification & Test Suite in `.antigravity/`**
-  - [ ] Create `.antigravity/test_phase2_agent.py`: Verify prompt building, tool execution, failover routing, and streaming output.
-  - [ ] Execute tests and verify zero main-project contamination.
+  - [x] Create [`.antigravity/test_phase2_agent.py`](file:///c:/Users/asami/DOCS/Bujji/.antigravity/test_phase2_agent.py): Verify prompt building, tool execution, failover routing, and streaming output.
+  - [x] Create [`.antigravity/test_cli_commands.py`](file:///c:/Users/asami/DOCS/Bujji/.antigravity/test_cli_commands.py): Verify slash commands and system diagnostics.
+  - [x] Execute tests and verify zero main-project contamination.
 
 ### Phase 3: Voice System
 - [ ] Wake word detection ("Hey Bujji") using openwake-word or Porcupine.
