@@ -1,0 +1,12 @@
+# Antigravity agent testing, verification scripts, helper tools, experiments & temporary files
+.antigravity/
+
+# Operating System Files
+Thumbs.db
+[Dd]esktop.ini
+.DS_Store
+
+# Common IDE and Environment Files
+.vscode/
+.idea/
+*.log
