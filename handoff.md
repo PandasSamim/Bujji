@@ -4,7 +4,7 @@
 - **Project**: Bujji - Personal AI Assistant (JARVIS-inspired)
 - **Current Phase**: Phase 1 (Foundation) completed; ready for Phase 2 (Core Agent).
 - **Date / Time**: 2026-09-12
-- **Git Branch**: `master`
+- **Git Branch**: `main` (connected to `origin/main` at [PandasSamim/Bujji](https://github.com/PandasSamim/Bujji))
 
 ---
 
@@ -14,6 +14,7 @@
    - Initialized and updated [`rules.md`](file:///c:/Users/asami/DOCS/Bujji/rules.md) specifying core guidelines, isolation rules, and Git hygiene.
    - Initialized and updated [`outline.md`](file:///c:/Users/asami/DOCS/Bujji/outline.md) with the comprehensive 7-phase roadmap, system design, and file architecture.
    - Maintained [`handoff.md`](file:///c:/Users/asami/DOCS/Bujji/handoff.md) for real-time tracking and resumption instructions.
+   - Connected remote repository to GitHub ([PandasSamim/Bujji](https://github.com/PandasSamim/Bujji)) and pushed upstream to `main`.
 
 2. **Isolated Scratchpad Directory**:
    - Established [`.antigravity/`](file:///c:/Users/asami/DOCS/Bujji/.antigravity/) at the project root and ensured it is ignored in [`.gitignore`](file:///c:/Users/asami/DOCS/Bujji/.gitignore).
