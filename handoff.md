@@ -2,47 +2,38 @@
 
 ## 1. Project State
 - **Project**: Bujji - Personal AI Assistant (JARVIS-inspired)
-- **Current Phase**: Phase 1 (Foundation) completed; ready for Phase 2 (Core Agent).
+- **Current Phase**: Phase 2 (Core Agent) - Roadmap established & kickoff initiated.
 - **Date / Time**: 2026-09-12
-- **Git Branch**: `main` (connected to `origin/main` at [PandasSamim/Bujji](https://github.com/PandasSamim/Bujji))
+- **Git Branch**: `main` (synced with `origin/main` at [PandasSamim/Bujji](https://github.com/PandasSamim/Bujji))
 
 ---
 
-## 2. Phase 1 Accomplishments
-
-1. **Mandatory Documentation & Working Rules**:
-   - Initialized and updated [`rules.md`](file:///c:/Users/asami/DOCS/Bujji/rules.md) specifying core guidelines, isolation rules, and Git hygiene.
-   - Initialized and updated [`outline.md`](file:///c:/Users/asami/DOCS/Bujji/outline.md) with the comprehensive 7-phase roadmap, system design, and file architecture.
-   - Maintained [`handoff.md`](file:///c:/Users/asami/DOCS/Bujji/handoff.md) for real-time tracking and resumption instructions.
-   - Connected remote repository to GitHub ([PandasSamim/Bujji](https://github.com/PandasSamim/Bujji)) and pushed upstream to `main`.
-
-2. **Isolated Scratchpad Directory**:
-   - Established [`.antigravity/`](file:///c:/Users/asami/DOCS/Bujji/.antigravity/) at the project root and ensured it is ignored in [`.gitignore`](file:///c:/Users/asami/DOCS/Bujji/.gitignore).
-   - Created [`.antigravity/test_sdk.py`](file:///c:/Users/asami/DOCS/Bujji/.antigravity/test_sdk.py) to safely verify SDK loading without polluting source code.
-
-3. **Project & Package Structure**:
-   - Created modular source package `bujji/` with submodules: `core`, `tools`, `voice`, `system`, `memory`, `ui`.
-   - Built [`bujji/config.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/config.py) for YAML and environment variable configuration management.
-   - Created [`config.yaml`](file:///c:/Users/asami/DOCS/Bujji/config.yaml), [`.env.example`](file:///c:/Users/asami/DOCS/Bujji/.env.example), and [`requirements.txt`](file:///c:/Users/asami/DOCS/Bujji/requirements.txt).
-
-4. **SDK & Dependencies Setup**:
-   - Installed and verified `google-antigravity` (v0.1.16), `pyyaml` (v6.0.3), and `rich` (v15.0.0).
-   - Executed `.antigravity/test_sdk.py` confirming `Agent`, `LocalAgentConfig`, and `CapabilitiesConfig` are operational.
+## 2. Phase 1 Summary (Foundation Complete)
+- Repository initialized, GitHub remote connected (`origin/main`).
+- Core rules and living documentation established: [`rules.md`](file:///c:/Users/asami/DOCS/Bujji/rules.md), [`outline.md`](file:///c:/Users/asami/DOCS/Bujji/outline.md), [`handoff.md`](file:///c:/Users/asami/DOCS/Bujji/handoff.md).
+- Isolated [`.antigravity/`](file:///c:/Users/asami/DOCS/Bujji/.antigravity/) folder setup and git-ignored.
+- `bujji/` module architecture created with configuration system (`config.yaml`, `bujji/config.py`).
+- Antigravity SDK (`google-antigravity`) verified working via `.antigravity/test_sdk.py`.
 
 ---
 
-## 3. Pending & Next Step: Phase 2 (Core Agent)
+## 3. Phase 2 Detailed Roadmap & Plan of Action
 
-When proceeding to Phase 2, implement:
-1. **System Instructions & Personality** ([`bujji/core/prompts.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/prompts.py)):
-   - Define Bujji's JARVIS-inspired identity (confident, polite, sharp, proactive, helpful).
-2. **Main Bujji Agent Engine** ([`bujji/core/agent.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/core/agent.py)):
-   - Implement `BujjiAgent` class wrapping the Antigravity SDK (`Agent`).
-   - Add tool wiring (filesystem, safe terminal).
-   - Add hybrid fallback to Ollama when local mode is selected or offline.
-3. **Interactive Text Chat CLI**:
-   - Interactive loop in `bujji/main.py` using `rich` for formatted terminal output, streaming responses, and thought/tool call inspection.
-4. **Verification**:
-   - Create test script in `.antigravity/` to test prompt execution and interactive chat.
-   - Update `outline.md` and `handoff.md`.
-   - Commit changes to Git.
+### Active Steps:
+1. **Step 2.1: Personality & System Instructions (`bujji/core/prompts.py`)**:
+   - Define Bujji's JARVIS-inspired identity: witty, confident, polite, proactive, structured.
+   - Embed tool protocol and safety consciousness into system prompt.
+2. **Step 2.2: Tooling Subsystem (`bujji/tools/`)**:
+   - `filesystem.py`: Safe read/write/list/search with workspace sandboxing.
+   - `terminal.py`: Command runner with timeout and dangerous command blacklist.
+   - `registry.py`: Central tool dispatcher with unified schema for Antigravity & Ollama.
+3. **Step 2.3: Hybrid Model Engine (`bujji/core/`)**:
+   - `agent.py`: Unified `BujjiAgent` wrapping `google.antigravity.Agent`.
+   - `ollama_engine.py`: Local offline fallback via Ollama API.
+   - Automatic failover between Antigravity and Ollama.
+4. **Step 2.4: Interactive Terminal Chat UI (`bujji/main.py`, `bujji/ui/terminal_ui.py`)**:
+   - Rich terminal interface with streaming tokens, thinking indicators, and command mode (`/mode`, `/status`, `/help`).
+5. **Step 2.5: Verification & Testing in `.antigravity/`**:
+   - Test script `.antigravity/test_phase2_agent.py` to validate prompts, tools, failover, and interactive responses.
+6. **Step 2.6: Git Commit & Sync**:
+   - Commit Phase 2 milestones and push upstream to GitHub.

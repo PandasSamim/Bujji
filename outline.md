@@ -68,12 +68,24 @@ Bujji/
 - [x] Setup `requirements.txt`.
 - [x] Install & verify Antigravity SDK (`google-antigravity`) with test script in `.antigravity/`.
 
-### Phase 2: Core Agent [UPCOMING]
-- [ ] Build main Bujji Agent class utilizing `google.antigravity.Agent`.
-- [ ] Implement JARVIS-inspired personality and system instructions in `bujji/core/prompts.py`.
-- [ ] Implement basic toolset (file system operations, terminal command execution with safety checks).
-- [ ] Add hybrid engine support: Antigravity SDK as primary, Ollama as offline/local fallback.
-- [ ] Implement text chat loop with streaming responses and rich terminal presentation.
+### Phase 2: Core Agent [IN PROGRESS]
+- **Step 2.1: Personality & System Prompt Architecture**
+  - [ ] Implement `bujji/core/prompts.py`: JARVIS-inspired identity (confident, polite, witty, proactive, concise).
+  - [ ] Define formatting protocols, tool execution awareness, and safety guidelines in system instructions.
+- **Step 2.2: Tooling Framework & Execution Handlers**
+  - [ ] Implement `bujji/tools/filesystem.py`: Safe read, write, list, and search within project boundaries.
+  - [ ] Implement `bujji/tools/terminal.py`: Safe terminal command execution with timeouts and blocked dangerous patterns.
+  - [ ] Implement `bujji/tools/registry.py`: Central tool dispatcher with unified schema for both Antigravity and Ollama.
+- **Step 2.3: Hybrid Model Engine (Antigravity SDK + Ollama)**
+  - [ ] Implement `bujji/core/agent.py`: Unified `BujjiAgent` orchestrator managing life-cycle, model switching, and session state.
+  - [ ] Implement `bujji/core/ollama_engine.py`: Local LLM fallback engine via Ollama REST/API client for offline resilience.
+  - [ ] Implement intelligent failover: Antigravity primary -> Ollama local fallback -> graceful error recovery.
+- **Step 2.4: Interactive Text Chat Loop & Terminal UI**
+  - [ ] Implement `bujji/ui/terminal_ui.py`: Rich terminal presentation with Bujji banner, status indicators, and streaming tokens.
+  - [ ] Implement `bujji/main.py`: Interactive CLI entry point with commands (`/mode`, `/status`, `/tools`, `/exit`).
+- **Step 2.5: Verification & Test Suite in `.antigravity/`**
+  - [ ] Create `.antigravity/test_phase2_agent.py`: Verify prompt building, tool execution, failover routing, and streaming output.
+  - [ ] Execute tests and verify zero main-project contamination.
 
 ### Phase 3: Voice System
 - [ ] Wake word detection ("Hey Bujji") using openwake-word or Porcupine.
