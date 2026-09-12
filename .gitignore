@@ -1,12 +1,43 @@
-# Antigravity agent testing, verification scripts, helper tools, experiments & temporary files
+# ==============================================================================
+# Mandatory Isolated Testing & Scratchpad Directory (Antigravity Agent)
+# ==============================================================================
 .antigravity/
 
-# Operating System Files
+# ==============================================================================
+# Python & Environment
+# ==============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment variables & secrets
+.env
+*.env
+!.env.example
+
+# ==============================================================================
+# Operating System & IDE Artifacts
+# ==============================================================================
 Thumbs.db
 [Dd]esktop.ini
 .DS_Store
-
-# Common IDE and Environment Files
 .vscode/
 .idea/
 *.log
+
+# ==============================================================================
+# Model Weights, Cache & Vector DB Local Storage
+# ==============================================================================
+data/chroma/
+data/memory/
+models/
+*.onnx
+*.bin

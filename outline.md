@@ -1,32 +1,103 @@
-# Project Outline
+# Bujji - Project Architecture & Roadmap
 
-## 1. Overview
-- **Project Name**: Bujji
-- **Status**: Initialization Phase
-- **Workspace**: `c:\Users\asami\DOCS\Bujji`
+> **Bujji** is an autonomous personal AI assistant inspired by JARVIS, powered by the Google Antigravity SDK with hybrid local LLM (Ollama) fallback, voice interaction, system control, persistent memory, and an overlay UI.
 
 ---
 
-## 2. Directory Structure
+## 1. Clean Project Structure
+
 ```
 Bujji/
-├── .antigravity/         # Testing files, verification scripts, helper tools, scratchpads (git-ignored)
-├── .gitignore            # Git exclusion definitions
-├── rules.md              # Mandatory guidelines & project rules
-├── outline.md            # High-level architecture, roadmap, and structure (this file)
-└── handoff.md            # Current operational status, recent updates, and handoff notes
+├── .antigravity/               # Isolated testing files, verification scripts, helper tools, scratch (git-ignored)
+│   ├── README.md               # Folder purpose & usage guide
+│   └── test_sdk.py             # Environment & SDK verification script
+├── .env.example                # Sample environment configuration
+├── .gitignore                  # Git exclusion rules (.antigravity/, .env, venvs, cache)
+├── config.yaml                 # Core configuration (personality, engines, voice, tools)
+├── handoff.md                  # Operational status, accomplishments, and handoff log
+├── outline.md                  # Architecture overview & multi-phase roadmap (this document)
+├── requirements.txt            # Python dependencies (google-antigravity, rich, pyyaml, etc.)
+├── rules.md                    # Mandatory operating rules and quality constraints
+└── bujji/                      # Main source package
+    ├── __init__.py             # Package metadata
+    ├── config.py               # Configuration loader & validator
+    ├── core/                   # Phase 2: Core Agent Engine
+    │   ├── __init__.py
+    │   ├── agent.py            # Primary agent orchestrator (Antigravity SDK + Ollama hybrid)
+    │   └── prompts.py          # Personality, system instructions & formatting rules
+    ├── tools/                  # Phase 2 & 4: Tools Framework
+    │   ├── __init__.py         # Tool registry and dispatch
+    │   ├── filesystem.py       # File reading, writing, search
+    │   ├── terminal.py         # Safe command runner
+    │   └── web.py              # Web search and URL fetching
+    ├── voice/                  # Phase 3: Voice Subsystem
+    │   ├── __init__.py
+    │   ├── wakeword.py         # Wake word detection ("Hey Bujji")
+    │   ├── stt.py              # Speech-to-Text (faster-whisper)
+    │   ├── tts.py              # Text-to-Speech (Piper TTS)
+    │   └── loop.py             # Voice state loop (Listening / Thinking / Speaking)
+    ├── system/                 # Phase 4: System Control
+    │   ├── __init__.py
+    │   ├── apps.py             # App launching & process management
+    │   ├── input.py            # Mouse & keyboard automation
+    │   ├── screen.py           # Screenshot capture & vision understanding
+    │   └── safety.py           # Confirmation guards for critical actions
+    ├── memory/                 # Phase 5: Memory Management
+    │   ├── __init__.py
+    │   ├── conversation.py     # Short-term chat history
+    │   ├── vector_store.py     # ChromaDB semantic memory store
+    │   └── user_profile.py     # Long-term user preferences & facts
+    └── ui/                     # Phase 6: User Interface
+        ├── __init__.py
+        ├── terminal_ui.py      # Rich terminal display
+        └── overlay.py          # Floating UI / Status overlay
 ```
 
 ---
 
-## 3. Architecture & Components
-*(To be populated as project scope and requirements are defined)*
+## 2. Multi-Phase Roadmap
 
----
+### Phase 1: Foundation [COMPLETED]
+- [x] Create clean project structure and package folders (`bujji/`).
+- [x] Create `.antigravity/` folder and add to `.gitignore`.
+- [x] Maintain living markdown files: [`rules.md`](file:///c:/Users/asami/DOCS/Bujji/rules.md), [`outline.md`](file:///c:/Users/asami/DOCS/Bujji/outline.md), [`handoff.md`](file:///c:/Users/asami/DOCS/Bujji/handoff.md).
+- [x] Initialize Git repository with clean commits.
+- [x] Setup basic configuration (`config.yaml`, `.env.example`, [`bujji/config.py`](file:///c:/Users/asami/DOCS/Bujji/bujji/config.py)).
+- [x] Setup `requirements.txt`.
+- [x] Install & verify Antigravity SDK (`google-antigravity`) with test script in `.antigravity/`.
 
-## 4. Milestones & Roadmap
-- [x] Repository initialization & Git tracking setup.
-- [x] Configure core documentation (`rules.md`, `outline.md`, `handoff.md`).
-- [x] Configure isolated test directory (`.antigravity/`) and `.gitignore`.
-- [ ] Define project specifications and domain requirements with the user.
-- [ ] Build core project modules adhering to project rules.
+### Phase 2: Core Agent [UPCOMING]
+- [ ] Build main Bujji Agent class utilizing `google.antigravity.Agent`.
+- [ ] Implement JARVIS-inspired personality and system instructions in `bujji/core/prompts.py`.
+- [ ] Implement basic toolset (file system operations, terminal command execution with safety checks).
+- [ ] Add hybrid engine support: Antigravity SDK as primary, Ollama as offline/local fallback.
+- [ ] Implement text chat loop with streaming responses and rich terminal presentation.
+
+### Phase 3: Voice System
+- [ ] Wake word detection ("Hey Bujji") using openwake-word or Porcupine.
+- [ ] Speech-to-Text (STT) via `faster-whisper`.
+- [ ] Text-to-Speech (TTS) using local high-performance Piper TTS.
+- [ ] Complete voice loop with clear state transitions: `[Listening] -> [Thinking] -> [Speaking]`.
+
+### Phase 4: System Control
+- [ ] Application lifecycle control (launching, closing, switching apps).
+- [ ] Mouse and keyboard automation via `pyautogui`.
+- [ ] Screenshot capture and screen comprehension.
+- [ ] File operations and web search integration.
+- [ ] Mandatory safety confirmation protocol for destructive or sensitive system actions.
+
+### Phase 5: Memory Subsystem
+- [ ] Rolling conversation history and context window pruning.
+- [ ] Vector memory integration using ChromaDB for long-term document & memory recall.
+- [ ] Persistent user profile and preferences management.
+
+### Phase 6: Advanced Features
+- [ ] Multi-step autonomous task planning and execution.
+- [ ] Sub-agent delegation for concurrent or specialized jobs.
+- [ ] Lightweight floating UI / status overlay widget.
+- [ ] Robust error handling, auto-recovery, and cross-platform compatibility.
+
+### Phase 7: Polish & Delivery
+- [ ] Complete, professional `README.md` with setup guides and architecture documentation.
+- [ ] End-to-end integration testing across all subsystems (inside `.antigravity/`).
+- [ ] Performance profiling, memory footprint optimization, and codebase cleanup.

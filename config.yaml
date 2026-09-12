@@ -1,0 +1,44 @@
+# Bujji - Core Configuration
+
+assistant:
+  name: "Bujji"
+  version: "0.1.0"
+  role: "Personal AI Assistant & Autonomous System Companion"
+  personality: "Confident, witty, highly resourceful, polite yet proactive (JARVIS-inspired)"
+
+engine:
+  # Primary reasoning engine: "antigravity" or "ollama" or "hybrid"
+  default_mode: "antigravity"
+  antigravity:
+    model: "gemini-2.5-flash"
+    streaming: true
+    capabilities:
+      allow_terminal: true
+      allow_filesystem: true
+      allow_browser: false
+  ollama:
+    base_url: "http://localhost:11434"
+    model: "llama3.2"
+    temperature: 0.7
+
+voice:
+  enabled: false
+  wake_word: "Hey Bujji"
+  stt_engine: "faster-whisper"
+  stt_model: "base.en"
+  tts_engine: "piper"
+  tts_voice: "en_US-lessac-medium"
+
+system_control:
+  allow_mouse_keyboard: false
+  safety_confirmation: true
+  allowed_apps:
+    - "notepad"
+    - "calc"
+    - "explorer"
+    - "browser"
+
+memory:
+  enabled: true
+  chroma_db_path: "./data/chroma"
+  max_context_turns: 10
